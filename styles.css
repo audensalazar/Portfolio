@@ -1,11 +1,26 @@
 :root {
-  --bg: #eef3fb;
+  --bg: #fbf8ff;
   --ink: #171717;
   --muted: #5d6572;
-  --orange: #f4512a;
-  --blue: #003595;
+
+  --magenta: #ff00ff;
+  --lemon-lime: #cdeb05;
+  --electric-sapphire: #6464ff;
+  --pumpkin-spice: #ff6e00;
+  --rosewood: #cd0f55;
+
+  --orange: var(--pumpkin-spice);
+  --blue: var(--electric-sapphire);
   --card: #ffffff;
   --line: rgba(23, 23, 23, 0.12);
+
+  --gradient: linear-gradient(
+    135deg,
+    var(--magenta),
+    var(--electric-sapphire),
+    var(--pumpkin-spice),
+    var(--rosewood)
+  );
 }
 
 * { box-sizing: border-box; }
@@ -15,13 +30,16 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(255, 0, 255, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(205, 235, 5, 0.18), transparent 25%),
+    var(--bg);
   color: var(--ink);
   line-height: 1.6;
 }
 
 a {
-  color: var(--blue);
+  color: var(--electric-sapphire);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
@@ -39,7 +57,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 20px clamp(20px, 5vw, 72px);
-  background: rgba(238, 243, 251, 0.86);
+  background: rgba(251, 248, 255, 0.86);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
 }
@@ -61,6 +79,11 @@ nav a {
   text-decoration: none;
 }
 
+nav a:hover,
+.brand:hover {
+  color: var(--rosewood);
+}
+
 .section {
   padding: clamp(54px, 7vw, 96px) clamp(20px, 5vw, 72px);
 }
@@ -74,7 +97,7 @@ nav a {
 }
 
 .eyebrow {
-  color: var(--orange);
+  color: var(--rosewood);
   font-weight: 900;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -100,7 +123,7 @@ h2 {
 h3 {
   font-size: clamp(28px, 3vw, 46px);
   letter-spacing: -0.04em;
-  color: var(--orange);
+  color: var(--rosewood);
 }
 
 .lede {
@@ -125,16 +148,23 @@ h3 {
   font-weight: 900;
   text-decoration: none;
   border: 2px solid var(--ink);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
 }
 
 .button.primary {
-  background: var(--orange);
+  background: var(--gradient);
   color: white;
-  border-color: var(--orange);
+  border-color: transparent;
+  box-shadow: 0 14px 30px rgba(205, 15, 85, .24);
 }
 
 .button.ghost {
   color: var(--ink);
+  background: rgba(255,255,255,.45);
 }
 
 .hero-card {
@@ -143,6 +173,7 @@ h3 {
   box-shadow: 0 24px 70px rgba(0,0,0,.12);
   transform: rotate(1deg);
   background: white;
+  border: 3px solid rgba(255, 0, 255, .25);
 }
 
 .hero-card img {
@@ -164,11 +195,14 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 22px;
   padding: 26px;
+  box-shadow: 0 12px 30px rgba(100, 100, 255, .08);
 }
 
 .stats strong {
   display: block;
-  color: var(--orange);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: clamp(36px, 5vw, 70px);
   line-height: 1;
   letter-spacing: -.05em;
@@ -187,20 +221,21 @@ h3 {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
   gap: 34px;
-  background: var(--ink);
+  background: var(--gradient);
   color: white;
   border-radius: 28px;
   padding: clamp(28px, 5vw, 56px);
   margin-bottom: 32px;
-  box-shadow: 0 18px 45px rgba(0,0,0,.11);
+  box-shadow: 0 18px 45px rgba(205, 15, 85, .22);
 }
 
+.featured-case .eyebrow,
 .featured-case h3 {
   color: white;
 }
 
 .featured-case p:not(.eyebrow) {
-  color: rgba(255,255,255,.78);
+  color: rgba(255,255,255,.84);
   font-size: clamp(17px, 1.6vw, 21px);
   margin-top: 0;
 }
@@ -238,7 +273,7 @@ h3 {
 
 .number {
   display: block;
-  color: var(--orange);
+  color: var(--electric-sapphire);
   font-size: 44px;
   line-height: 1;
   font-weight: 400;
@@ -246,7 +281,7 @@ h3 {
 }
 
 .type {
-  color: var(--orange);
+  color: var(--rosewood);
   font-weight: 900;
   margin: 10px 0 18px;
 }
@@ -299,13 +334,18 @@ ul {
 }
 
 .contact {
-  background: var(--ink);
+  background: var(--gradient);
   color: white;
   text-align: center;
 }
 
+.contact .eyebrow,
+.contact h2 {
+  color: white;
+}
+
 .contact p {
-  color: rgba(255,255,255,.78);
+  color: rgba(255,255,255,.84);
   max-width: 720px;
   margin: 18px auto;
 }
@@ -329,6 +369,44 @@ footer {
   color: var(--muted);
 }
 
+/* Photography Gallery */
+
+#photography {
+  border-top: 1px solid var(--line);
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.photo-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 18px 45px rgba(0,0,0,.07);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.photo-gallery img:hover {
+  transform: translateY(-6px);
+  border-color: var(--magenta);
+  box-shadow:
+    0 0 0 3px rgba(255,0,255,.14),
+    0 24px 60px rgba(0,0,0,.12);
+}
+
+@media (max-width: 1100px) {
+  .photo-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .hero,
   .about,
@@ -337,6 +415,10 @@ footer {
   .featured-case,
   .strategy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero {
@@ -375,49 +457,7 @@ footer {
     padding-left: 18px;
     padding-right: 18px;
   }
-}
-/* Photography Gallery */
 
-.photo-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 32px;
-}
-
-.photo-gallery img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-
-  border-radius: 22px;
-  border: 1px solid var(--line);
-
-  background: var(--card);
-  box-shadow: 0 18px 45px rgba(0,0,0,.07);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-}
-
-.photo-gallery img:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(0,0,0,.12);
-}
-@media (max-width: 1100px) {
-  .photo-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .photo-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
   .photo-gallery {
     grid-template-columns: 1fr;
   }
