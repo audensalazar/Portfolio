@@ -88,7 +88,7 @@ nav a:hover,
 }
 
 .eyebrow {
-  color: var(--lemon-lime);
+  color: var(--ink);
   font-weight: 900;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -227,7 +227,7 @@ h3 {
   grid-template-columns: .9fr 1.1fr;
   gap: 34px;
 
-  background: var(--rosewood);
+  background: var(--lemon-lime);
   color: white;
 
   border-radius: 28px;
